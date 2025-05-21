@@ -4,6 +4,6 @@ import com.provasubstitutiva.fiap.domain.model.Foto;
 
 import java.util.List;
 
-public interface BuscarFotoPorIdEstabelecimento {
+public interface BuscarFotosPorIdEstabelecimento {
     List<Foto> buscarFotoPorIdEstabelecimento(Long idEstabelecimento);
 }

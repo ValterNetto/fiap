@@ -1,7 +1,7 @@
 package com.provasubstitutiva.fiap.application.usecase.horario.impl;
 
 import com.provasubstitutiva.fiap.application.usecase.estabelecimento.BuscarEstabelecimentoPorId;
-import com.provasubstitutiva.fiap.application.usecase.horario.BuscarPorIdEstabelecimento;
+import com.provasubstitutiva.fiap.application.usecase.horario.BuscarHorariosPorIdEstabelecimento;
 import com.provasubstitutiva.fiap.application.usecase.horario.CadastrarHorario;
 import com.provasubstitutiva.fiap.domain.model.Horario;
 
@@ -12,19 +12,19 @@ public class CadastrarHorarioImpl {
 
     private final CadastrarHorario cadastrarHorario;
     private final BuscarEstabelecimentoPorId buscarEstabelecimento;
-    private final BuscarPorIdEstabelecimento buscarPorIdEstabelecimento;
+    private final BuscarHorariosPorIdEstabelecimento buscarHorariosPorIdEstabelecimento;
 
-    public CadastrarHorarioImpl(CadastrarHorario cadastrarHorario, BuscarEstabelecimentoPorId buscarEstabelecimento, BuscarPorIdEstabelecimento buscarPorIdEstabelecimento) {
+    public CadastrarHorarioImpl(CadastrarHorario cadastrarHorario, BuscarEstabelecimentoPorId buscarEstabelecimento, BuscarHorariosPorIdEstabelecimento buscarHorariosPorIdEstabelecimento) {
         this.cadastrarHorario = cadastrarHorario;
         this.buscarEstabelecimento = buscarEstabelecimento;
-        this.buscarPorIdEstabelecimento = buscarPorIdEstabelecimento;
+        this.buscarHorariosPorIdEstabelecimento = buscarHorariosPorIdEstabelecimento;
     }
 
     public Horario cadastraHorario(Horario horario) {
         if (Objects.isNull(buscarEstabelecimento.buscarEstabelecimentoPorId(horario.getIdEstabelecimento()))) {
             throw new NoSuchElementException("Estabelecimento não encontrado");
         }
-        Horario horarioExistente = buscarPorIdEstabelecimento.buscarPorIdEstabelecimento(horario.getIdEstabelecimento())
+        Horario horarioExistente = buscarHorariosPorIdEstabelecimento.buscarPorIdEstabelecimento(horario.getIdEstabelecimento())
                 .stream().filter(horarioStream -> horarioStream.getDiaDaSemana().equals(horario.getDiaDaSemana()))
                 .findFirst()
                 .orElse(null);

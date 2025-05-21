@@ -4,7 +4,7 @@ import com.provasubstitutiva.fiap.domain.model.Horario;
 
 import java.util.List;
 
-public interface BuscarPorIdEstabelecimento {
+public interface BuscarHorariosPorIdEstabelecimento {
 
     List<Horario> buscarPorIdEstabelecimento(Long idEstabelecimento);
 }

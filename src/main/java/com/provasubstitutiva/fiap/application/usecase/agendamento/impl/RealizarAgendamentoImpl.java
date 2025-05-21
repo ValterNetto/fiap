@@ -5,7 +5,7 @@ import com.provasubstitutiva.fiap.application.usecase.agendamento.RealizarAgenda
 import com.provasubstitutiva.fiap.application.usecase.cliente.BuscarClientePorId;
 import com.provasubstitutiva.fiap.application.usecase.estabelecimento.BuscarEstabelecimentoPorId;
 import com.provasubstitutiva.fiap.application.usecase.horario.BuscarHorarioPorDia;
-import com.provasubstitutiva.fiap.application.usecase.profissional.BuscarPorIdProfissional;
+import com.provasubstitutiva.fiap.application.usecase.profissional.BuscarProfissionalPorId;
 import com.provasubstitutiva.fiap.application.usecase.servico.BuscarServicoPorId;
 import com.provasubstitutiva.fiap.domain.model.*;
 import com.provasubstitutiva.fiap.domain.model.constant.DiasDaSemanaEnum;
@@ -17,16 +17,16 @@ import java.util.Objects;
 public class RealizarAgendamentoImpl {
     private final RealizarAgendamento realizarAgendamento;
     private final BuscarClientePorId buscarClientePorId;
-    private final BuscarPorIdProfissional buscarPorIdProfissional;
+    private final BuscarProfissionalPorId buscarProfissionalPorId;
     private final BuscarEstabelecimentoPorId buscarEstabelecimentoPorId;
     private final BuscarServicoPorId buscarServicoPorId;
     private final BuscarHorarioPorDia buscarHorarioPorDia;
     private final BuscarAgendamentosPorProfissionalEDia buscarAgendamentosPorProfissionalEDia;
 
-    public RealizarAgendamentoImpl(RealizarAgendamento realizarAgendamento, BuscarClientePorId buscarClientePorId, BuscarPorIdProfissional buscarPorIdProfissional, BuscarEstabelecimentoPorId buscarEstabelecimentoPorId, BuscarServicoPorId buscarServicoPorId, BuscarHorarioPorDia buscarHorarioPorDia, BuscarAgendamentosPorProfissionalEDia buscarAgendamentosPorProfissionalEDia) {
+    public RealizarAgendamentoImpl(RealizarAgendamento realizarAgendamento, BuscarClientePorId buscarClientePorId, BuscarProfissionalPorId buscarProfissionalPorId, BuscarEstabelecimentoPorId buscarEstabelecimentoPorId, BuscarServicoPorId buscarServicoPorId, BuscarHorarioPorDia buscarHorarioPorDia, BuscarAgendamentosPorProfissionalEDia buscarAgendamentosPorProfissionalEDia) {
         this.realizarAgendamento = realizarAgendamento;
         this.buscarClientePorId = buscarClientePorId;
-        this.buscarPorIdProfissional = buscarPorIdProfissional;
+        this.buscarProfissionalPorId = buscarProfissionalPorId;
         this.buscarEstabelecimentoPorId = buscarEstabelecimentoPorId;
         this.buscarServicoPorId = buscarServicoPorId;
         this.buscarHorarioPorDia = buscarHorarioPorDia;
@@ -38,7 +38,7 @@ public class RealizarAgendamentoImpl {
             throw new NoSuchElementException("Cliente não encontrato");
         }
 
-        Profissional profissional = buscarPorIdProfissional.buscarPorId(agendamento.getIdProfissional());
+        Profissional profissional = buscarProfissionalPorId.buscarPorId(agendamento.getIdProfissional());
         if (Objects.isNull(profissional)) {
             throw new NoSuchElementException("Profissional não encontrado");
         }

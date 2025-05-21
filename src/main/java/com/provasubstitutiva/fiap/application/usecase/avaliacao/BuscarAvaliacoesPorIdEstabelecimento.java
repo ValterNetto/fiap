@@ -4,6 +4,6 @@ import com.provasubstitutiva.fiap.domain.model.Avaliacao;
 
 import java.util.List;
 
-public interface BuscarPorIdEstabelecimento {
+public interface BuscarAvaliacoesPorIdEstabelecimento {
     List<Avaliacao> buscarPorIdEstabelecimento(Long idEstabelecimento);
 }
