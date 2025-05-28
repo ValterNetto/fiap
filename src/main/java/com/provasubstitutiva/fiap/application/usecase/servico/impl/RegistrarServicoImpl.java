@@ -21,6 +21,7 @@ public class RegistrarServicoImpl {
         if (Objects.isNull(buscarEstabelecimentoPorId.buscarEstabelecimentoPorId(servico.getIdEstabelecimento()))) {
             throw new NoSuchElementException("Estabelecimento não encontrado");
         }
+        servico.setId(null);
         return registrarServico.registrarServico(servico);
     }
 }

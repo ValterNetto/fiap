@@ -12,6 +12,7 @@ public class RegistrarProfissionalImpl {
     }
 
     public Profissional registrarProfissional(Profissional profissional) {
+        profissional.setIdEstabelecimento(null);
         return registrarProfissional.registrar(profissional);
     }
 }

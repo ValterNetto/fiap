@@ -7,6 +7,16 @@ public class Servico {
     private int valor;
     private Long idEstabelecimento;
 
+    public Servico() {
+    }
+
+    public Servico(Long id, String nome, int valor, Long idEstabelecimento) {
+        this.id = id;
+        this.nome = nome;
+        this.valor = valor;
+        this.idEstabelecimento = idEstabelecimento;
+    }
+
     public Long getId() {
         return id;
     }

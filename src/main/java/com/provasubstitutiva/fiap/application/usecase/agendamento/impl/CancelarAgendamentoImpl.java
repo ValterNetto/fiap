@@ -19,10 +19,14 @@ public class CancelarAgendamentoImpl {
 
     public Agendamento cancelar(Long idAgendamento) {
         Agendamento agendamento = buscarAgendamentoPorId.buscarAgendamentoPorId(idAgendamento);
-        if(Objects.isNull(agendamento)) {
+        if (Objects.isNull(agendamento)) {
             throw new NoSuchElementException("Não foi possível encontrar o agendamento");
         }
+        if (agendamento.getStatus().equals(StatusEnum.CANCELADO)
+                || agendamento.getStatus().equals(StatusEnum.CONCLUIDO)) {
+            throw new IllegalStateException("Não é possível cancelar um agendamento já cancelado ou concluído");
+        }
         agendamento.setStatus(StatusEnum.CANCELADO);
-        return cancelarAgendamento.cancelar(idAgendamento);
+        return cancelarAgendamento.cancelar(agendamento);
     }
 }

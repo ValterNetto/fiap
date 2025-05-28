@@ -17,6 +17,21 @@ public class Agendamento {
     private LocalTime horaInicio;
     private LocalTime horaTermino;
 
+    public Agendamento() {
+    }
+
+    public Agendamento(Long id, Long idProfissional, Long idEstabelecimento, Long idCliente, Long idServico, StatusEnum status, LocalDate data, LocalTime horaInicio, LocalTime horaTermino) {
+        this.id = id;
+        this.idProfissional = idProfissional;
+        this.idEstabelecimento = idEstabelecimento;
+        this.idCliente = idCliente;
+        this.idServico = idServico;
+        this.status = status;
+        this.data = data;
+        this.horaInicio = horaInicio;
+        this.horaTermino = horaTermino;
+    }
+
     public Long getId() {
         return id;
     }

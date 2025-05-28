@@ -6,11 +6,22 @@ import java.time.LocalTime;
 
 public class Horario {
 
-    Long id;
-    DiasDaSemanaEnum diaDaSemana;
-    LocalTime inicio;
-    LocalTime fim;
-    Long idEstabelecimento;
+    private Long id;
+    private DiasDaSemanaEnum diaDaSemana;
+    private LocalTime inicio;
+    private LocalTime fim;
+    private Long idEstabelecimento;
+
+    public Horario() {
+    }
+
+    public Horario(Long id, DiasDaSemanaEnum diaDaSemana, LocalTime inicio, LocalTime fim, Long idEstabelecimento) {
+        this.id = id;
+        this.diaDaSemana = diaDaSemana;
+        this.inicio = inicio;
+        this.fim = fim;
+        this.idEstabelecimento = idEstabelecimento;
+    }
 
     public Long getId() {
         return id;

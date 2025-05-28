@@ -29,6 +29,9 @@ public class RegistrarEnderecoImpl {
         if (Objects.nonNull(buscarEnderecoPorIdEstabelecimento.buscarPorIdEstabelecimento(endereco.getIdEstabelecimento()))) {
             throw new IllegalStateException("Este estabelecimento já contém um endereço");
         }
+        if (!endereco.isValid()) {
+            throw new IllegalStateException("Dados obrigatórios estão nulos, preencha-os corretamente");
+        }
         return registrarEndereco.registrarEndereco(endereco);
     }
 }

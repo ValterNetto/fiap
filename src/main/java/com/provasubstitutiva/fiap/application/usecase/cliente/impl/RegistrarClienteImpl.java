@@ -12,6 +12,7 @@ public class RegistrarClienteImpl {
     }
 
     public Cliente registrarCliente(Cliente cliente) {
+        cliente.setId(null);
         return registrarCliente.registrarCliente(cliente);
     }
 }

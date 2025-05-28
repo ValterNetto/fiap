@@ -5,11 +5,13 @@ import com.provasubstitutiva.fiap.application.usecase.agendamento.RealizarAgenda
 import com.provasubstitutiva.fiap.application.usecase.cliente.BuscarClientePorId;
 import com.provasubstitutiva.fiap.application.usecase.estabelecimento.BuscarEstabelecimentoPorId;
 import com.provasubstitutiva.fiap.application.usecase.horario.BuscarHorarioPorDia;
+import com.provasubstitutiva.fiap.application.usecase.notificacao.EnviarEmailNotificandoAgendamento;
 import com.provasubstitutiva.fiap.application.usecase.profissional.BuscarProfissionalPorId;
 import com.provasubstitutiva.fiap.application.usecase.servico.BuscarServicoPorId;
 import com.provasubstitutiva.fiap.domain.model.*;
 import com.provasubstitutiva.fiap.domain.model.constant.DiasDaSemanaEnum;
 import com.provasubstitutiva.fiap.domain.model.constant.StatusEnum;
+import lombok.AllArgsConstructor;
 
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -69,8 +71,9 @@ public class RealizarAgendamentoImpl {
     private boolean haDisponibilidadeDeDataEHorario(Agendamento agendamento, Estabelecimento estabelecimento) {
         String dayOfWeek = agendamento.getData().getDayOfWeek().toString();
         Horario horarioDoEstabelecimento = buscarHorarioPorDia.buscarHorarioPorDia(estabelecimento.getId(), DiasDaSemanaEnum.valueOf(dayOfWeek));
-        if (agendamento.getHoraInicio().isBefore(horarioDoEstabelecimento.getInicio())
-        || agendamento.getHoraTermino().isAfter(horarioDoEstabelecimento.getFim())) {
+        if (Objects.nonNull(horarioDoEstabelecimento) &&
+                (agendamento.getHoraInicio().isBefore(horarioDoEstabelecimento.getInicio())
+        || agendamento.getHoraTermino().isAfter(horarioDoEstabelecimento.getFim()))) {
             return false;
         }
         return buscarAgendamentosPorProfissionalEDia.buscarAgendamentos(

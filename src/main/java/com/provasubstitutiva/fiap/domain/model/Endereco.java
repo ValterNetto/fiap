@@ -10,6 +10,19 @@ public class Endereco {
     private double longitude;
     private Long idEstabelecimento;
 
+    public Endereco() {
+    }
+
+    public Endereco(Long id, String logradouro, String cep, String numero, double latitude, double longitude, Long idEstabelecimento) {
+        this.id = id;
+        this.logradouro = logradouro;
+        this.cep = cep;
+        this.numero = numero;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.idEstabelecimento = idEstabelecimento;
+    }
+
     public boolean isValid() {
         return logradouro != null
                 && cep != null

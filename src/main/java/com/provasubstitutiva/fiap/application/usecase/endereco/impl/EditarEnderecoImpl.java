@@ -21,6 +21,9 @@ public class EditarEnderecoImpl {
         if(Objects.isNull(buscarEnderecoPorId.buscarEnderecoPorId(endereco.getIdEstabelecimento()))) {
             throw new NoSuchElementException("Endereco não encontrado");
         }
+        if (!endereco.isValid()) {
+            throw new IllegalStateException("Dados obrigatórios estão nulos, preencha-os corretamente");
+        }
         return editarEndereco.editarEndereco(endereco);
     }
 }

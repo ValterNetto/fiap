@@ -2,10 +2,20 @@ package com.provasubstitutiva.fiap.domain.model;
 
 public class Estabelecimento {
 
-    Long id;
-    String nome;
-    Long idEndereco;
-    String email;
+    private Long id;
+    private String nome;
+    private Long idEndereco;
+    private String email;
+
+    public Estabelecimento() {
+    }
+
+    public Estabelecimento(Long id, String nome, Long idEndereco, String email) {
+        this.id = id;
+        this.nome = nome;
+        this.idEndereco = idEndereco;
+        this.email = email;
+    }
 
     public Long getId() {
         return id;

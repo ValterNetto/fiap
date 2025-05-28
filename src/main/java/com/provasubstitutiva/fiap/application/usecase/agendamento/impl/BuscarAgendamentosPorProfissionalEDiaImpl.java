@@ -5,6 +5,8 @@ import com.provasubstitutiva.fiap.domain.model.Agendamento;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class BuscarAgendamentosPorProfissionalEDiaImpl {
 
@@ -15,6 +17,8 @@ public class BuscarAgendamentosPorProfissionalEDiaImpl {
     }
 
     public List<Agendamento> buscarAgendamentos(Long idProfissional, LocalDate data) {
-        return buscarAgendamentosPorProfissionalEDia.buscarAgendamentos(idProfissional, data);
+        List<Agendamento> agendamentos = buscarAgendamentosPorProfissionalEDia.buscarAgendamentos(idProfissional, data);
+        if (Objects.isNull(agendamentos)) throw new NoSuchElementException("Não foram encontrados agendamentos");
+        return agendamentos;
     }
 }

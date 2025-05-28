@@ -2,12 +2,24 @@ package com.provasubstitutiva.fiap.domain.model;
 
 public class Profissional {
 
-    Long id;
-    String nome;
-    String email;
-    String especialidade;
-    Integer tarifaPorHora;
-    Long idEstabelecimento;
+    private Long id;
+    private String nome;
+    private String email;
+    private String especialidade;
+    private Integer tarifaPorHora;
+    private Long idEstabelecimento;
+
+    public Profissional() {
+    }
+
+    public Profissional(Long id, String nome, String email, String especialidade, Integer tarifaPorHora, Long idEstabelecimento) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.especialidade = especialidade;
+        this.tarifaPorHora = tarifaPorHora;
+        this.idEstabelecimento = idEstabelecimento;
+    }
 
     public Long getId() {
         return id;

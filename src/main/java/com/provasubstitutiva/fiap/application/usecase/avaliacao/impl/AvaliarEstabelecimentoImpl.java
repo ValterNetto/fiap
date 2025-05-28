@@ -33,6 +33,7 @@ public class AvaliarEstabelecimentoImpl {
             throw new IllegalStateException("O cliente não pode avaliar um estabelecimento ao qual nunca tenha concluido " +
                     "um agendamento");
         }
+        avaliacao.setIdProfissional(null);
         return avaliarEstabelecimento.fazerAvaliacao(avaliacao);
     }
 

@@ -12,6 +12,6 @@ public class BuscarEstabelecimentoPorIdImpl {
     }
 
     public Estabelecimento buscarEstabelecimentoPorId(Long id) {
-        return buscarEstabelecimentoPorId(id);
+        return estabelecimentoPorId.buscarEstabelecimentoPorId(id);
     }
 }

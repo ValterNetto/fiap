@@ -2,10 +2,21 @@ package com.provasubstitutiva.fiap.domain.model;
 
 public class Foto {
 
-    Long id;
-    String nome;
-    String foto;
-    Long idEstabelecimento;
+    private Long id;
+    private String nome;
+    private String foto;
+    private Long idEstabelecimento;
+
+
+    public Foto() {
+    }
+
+    public Foto(Long id, String nome, String foto, Long idEstabelecimento) {
+        this.id = id;
+        this.nome = nome;
+        this.foto = foto;
+        this.idEstabelecimento = idEstabelecimento;
+    }
 
     public Long getId() {
         return id;
